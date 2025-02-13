@@ -15,19 +15,19 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function Btn({ text, onClick }) {
+    function Btn({ text, fontSize = 16 }) {
       return (
         <div>
           <button
-            onClick={onClick}
             style={{
               backgroundColor: "tomato",
               color: "white",
               padding: "10px 20px",
               borderRadius: "5px",
-              border: "none",
+              border: 0,
               cursor: "pointer",
               borderRadius: 10,
+              fontSize: fontSize,
             }}
           >
             {text}
@@ -35,16 +35,10 @@
         </div>
       );
     }
-    const MemorizedBtn = React.memo(Btn);
     function App() {
-      const [value, setValue] = React.useState("Save Changes");
       return (
         <div>
-          <MemorizedBtn
-            onClick={() => setValue("Revert Value")}
-            text={value}
-          />
-          <MemorizedBtn text="Continue" />
+          <Btn text="Save Changes" />
         </div>
       );
     }
