@@ -15,21 +15,39 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function SaveBtn() {
-      return <button>Save Changes</button>;
-    }
-    function ConfirmBtn() {
-      return <button>Confirm</button>;
+    function Btn({ text, big }) {
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: "5px",
+            border: "none",
+            cursor: "pointer",
+            borderRadius: 10,
+            fontSize: big ? "20px" : "10px",
+          }}
+        >
+          {text}
+        </button>
+      );
     }
     function App() {
       return (
         <div>
-          <SaveBtn />
-          <ConfirmBtn />
+          <Btn
+            text="Save Changes"
+            big={true}
+          />
+          <Btn
+            text="Continue"
+            big={false}
+          />
         </div>
       );
     }
-    const root = document.getElementById('root');
+    const root = document.getElementById("root");
     ReactDOM.createRoot(root).render(<App />);
   </script>
 </html>
