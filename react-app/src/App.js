@@ -19,7 +19,8 @@ function App() {
   };
   const onSelect = (event) => {
     const selectedCoin = coins[event.target.selectedIndex];
-    setSelected(event.target.value);
+    console.log(selectedCoin.quotes.USD.price);
+    setSelected(selectedCoin.quotes.USD.price);
     setSelectedSymbol(selectedCoin.symbol);
   };
   return (
@@ -29,8 +30,8 @@ function App() {
         <strong>Loading...</strong>
       ) : (
         <select onChange={onSelect}>
-          {coins.map((coin) => (
-            <option value={coin.quotes.USD.price}>
+          {coins.map((coin, index) => (
+            <option>
               {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD
             </option>
           ))}
