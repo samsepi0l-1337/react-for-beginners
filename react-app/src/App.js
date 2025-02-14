@@ -5,6 +5,7 @@ function App() {
   const [coins, setCoins] = useState([]);
   const [amount, setAmount] = useState(0);
   const [selected, setSelected] = useState(0);
+  const [selectedSymbol, setSelectedSymbol] = useState('');
   useEffect(() => {
     fetch('https://api.coinpaprika.com/v1/tickers')
       .then((response) => response.json())
@@ -17,7 +18,9 @@ function App() {
     setAmount(event.target.value);
   };
   const onSelect = (event) => {
+    const selectedCoin = coins[event.target.selectedIndex];
     setSelected(event.target.value);
+    setSelectedSymbol(selectedCoin.symbol);
   };
   return (
     <div>
@@ -39,7 +42,9 @@ function App() {
         value={amount}
         onChange={onChange}
       />
-      <h2>You can get {amount > 0 ? amount / selected : 0}</h2>
+      <h2>
+        You can get {amount > 0 ? amount / selected : 0} {selectedSymbol}
+      </h2>
     </div>
   );
 }
