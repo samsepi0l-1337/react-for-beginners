@@ -19,7 +19,6 @@ function App() {
   };
   const onSelect = (event) => {
     const selectedCoin = coins[event.target.selectedIndex];
-    console.log(selectedCoin.quotes.USD.price);
     setSelected(selectedCoin.quotes.USD.price);
     setSelectedSymbol(selectedCoin.symbol);
   };
